@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     const allLinks = await db.select().from(links);
 
     return NextResponse.json({
-        links: allLinks[0],
+        links: allLinks,
     });
 }
 
