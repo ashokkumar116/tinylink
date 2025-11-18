@@ -21,3 +21,21 @@ export async function GET(request:Request,{params}:{params:Promise<{code:string}
     })
 
 }
+
+export async function DELETE(request:Request,{params}:{params:Promise<{code:string}>}){
+    const {code} = await params;
+    const res = await db.delete(links).where(eq(links.code,code));
+    if(res.rowCount === 0){
+        return NextResponse.json({
+            message:"link not found"
+        },
+        {
+            status:404
+        })
+    }
+    return NextResponse.json({
+        message:"Deleted",
+        res
+    })
+
+}
