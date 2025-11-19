@@ -28,7 +28,7 @@ export async function GET(request:Request,{ params } : {params:Promise<{ code: s
     }
     if(link.length > 0){
         await db.update(links).set({
-            totalClicks:link[0].totalClicks + 1,
+            totalClicks:(link[0].totalClicks ?? 0) + 1,
             lastClickedAt:new Date()
         }).where(eq(links.code,code));
         return NextResponse.redirect(link[0].targetUrl,{
