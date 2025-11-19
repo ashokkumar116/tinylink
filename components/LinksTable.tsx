@@ -1,6 +1,4 @@
 "use client";
-
-import { Link } from "@/db/schema";
 import { useRouter } from "next/navigation";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
@@ -17,6 +15,7 @@ export default function LinksTable({
   links: Link[];
   refresh: () => void;
 }) {
+  const router = useRouter();
   const [loading,setLoading] = useState(false);
 
   async function deleteLink(code: string) {
@@ -41,7 +40,6 @@ export default function LinksTable({
     return <p className="text-center text-gray-600 mt-6">No links found.</p>;
   }
 
-  const router = useRouter();
 
   return (
     <DataTable value={links} showGridlines paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} className="text-sm" >

@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BiArrowBack } from "react-icons/bi";
-import { BsBack } from "react-icons/bs";
 import { FaRegCopy } from "react-icons/fa";
 
 interface links {
@@ -15,7 +14,7 @@ interface links {
     createdAt: Date;
 }
 
-export default function StatsPage({ params }: { params: { code: string } }) {
+export default function StatsPage({ params }: { params: Promise<{ code: string }> }) {
     const { code }: { code: string } = React.use(params);
 
     const [data, setData] = useState({ link: null });
@@ -124,7 +123,7 @@ export default function StatsPage({ params }: { params: { code: string } }) {
                     <div className="flex flex-col gap-4">
                       <div className="bg-orange-100 border border-orange-200/50 px-6 py-3 flex flex-col items-start flex-1 w-70">
                         <p className="text-sm text-gray-500">Created At:</p>
-                        <p>{new Date(link?.createdAt!).toLocaleString()}</p>
+                        <p>{new Date(link?.createdAt).toLocaleString()}</p>
                       </div>
                     <div className="bg-violet-100 border border-violet-200/50 px-6 py-3 flex flex-col items-start flex-1 w-70">
                         <p className="text-sm text-gray-500">
@@ -133,7 +132,7 @@ export default function StatsPage({ params }: { params: { code: string } }) {
                         <p>
                             {link?.lastClickedAt
                                 ? new Date(
-                                      link?.lastClickedAt!
+                                      link?.lastClickedAt
                                   ).toLocaleString()
                                 : "Never"}
                         </p>
