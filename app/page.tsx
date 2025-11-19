@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import LinkForm from "@/components/LinkForm";
 import LinksTable from "@/components/LinksTable";
-import { Link } from "@/db/schema";
-import Navbar from "@/components/Navbar";
+import { LinkProps } from "next/link";
 
 export default function Page() {
-  const [links, setLinks] = useState<Link[]>([]);
+  const [links, setLinks] = useState<LinkProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   async function loadLinks() {
