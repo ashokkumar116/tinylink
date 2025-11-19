@@ -1,6 +1,5 @@
-import { db } from "@/db";
-import { links } from "@/db/schema";
-import { eq } from "drizzle-orm";
+
+
 
 export default async function StatsPage({ params }: { params: { code: string } }) {
   const { code } = await params;
@@ -62,6 +61,7 @@ export default async function StatsPage({ params }: { params: { code: string } }
           <p className="text-sm text-gray-500">Created At:</p>
           <p>{new Date(link?.createdAt!).toLocaleString()}</p>
         </div>
+
       </div>
     </div>
   );

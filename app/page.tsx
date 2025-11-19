@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LinkForm from "@/components/LinkForm";
 import LinksTable from "@/components/LinksTable";
 import { Link } from "@/db/schema";
+import Navbar from "@/components/Navbar";
 
 export default function Page() {
   const [links, setLinks] = useState<Link[]>([]);
@@ -22,13 +23,16 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="max-w-4xl mx-auto p-4 space-y-6">
+    <main className="max-w-4xl mx-auto p-4 space-y-6 my-20">
       <h1 className="text-2xl font-bold">Dashboard</h1>
 
       <LinkForm onCreated={loadLinks} />
 
       {loading ? (
-        <p className="text-center text-gray-600">Loading...</p>
+        <div className="flex items-center gap-3 justify-center">
+          <span className="loading loading-lg"></span>
+          <p>Loading...</p>
+        </div>
       ) : (
         <LinksTable links={links} refresh={loadLinks} />
       )}

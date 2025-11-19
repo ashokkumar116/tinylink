@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { LiaCompressArrowsAltSolid } from "react-icons/lia";
 
 export default function LinkForm({ onCreated }: { onCreated: () => void }) {
   const [url, setUrl] = useState("");
   const [customCode, setCustomCode] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError("");
 
     if (!url) {
-      setError("URL is required");
+      toast.error("URL is required");
       return;
     }
 
@@ -31,19 +31,20 @@ export default function LinkForm({ onCreated }: { onCreated: () => void }) {
     setLoading(false);
 
     if (!res.ok) {
-      setError(data.message || "Something went wrong");
+      toast.error(data.message);
       return;
     }
+    toast.success("Link created");
 
     setUrl("");
     setCustomCode("");
-    onCreated(); // Refresh dashboard
+    onCreated();
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-4 bg-white border rounded-lg shadow-sm space-y-3"
+      className="p-8 bg-white rounded-lg shadow-md space-y-3"
     >
       <h2 className="text-lg font-semibold">Create Short Link</h2>
 
@@ -63,13 +64,11 @@ export default function LinkForm({ onCreated }: { onCreated: () => void }) {
         className="w-full p-2 border rounded"
       />
 
-      {error && <p className="text-red-600 text-sm">{error}</p>}
-
       <button
         disabled={loading}
-        className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
+        className="cursor-pointer bg-gradient-to-br from-blue-500 to-indigo-600 text-white px-4 py-2 rounded hover:scale-105 transition-all disabled:bg-gray-400 flex items-center justify-center"
       >
-        {loading ? "Creating..." : "Shorten URL"}
+        {loading ? <span className="loading loading-lg"></span> : <p className="flex items-center gap-2"><LiaCompressArrowsAltSolid className="mr-2" /><span>Shorten URL</span></p>}
       </button>
     </form>
   );
