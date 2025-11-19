@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 TinyLink – Modern URL Shortener
 
-## Getting Started
+## A minimal, fast, and analytics-enabled URL shortener built using Next.js (App Router), PostgreSQL (Neon), and Drizzle ORM.
+Create short links, track clicks, view statistics, and manage your links from a clean dashboard.
 
-First, run the development server:
+### ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+* 🔗 URL Shortening
+
+* Create short URLs with auto-generated or custom codes
+
+* Instant response with validation
+
+* Prevents duplicate codes
+
+### 🔄 Redirection
+
+* Smart 302 redirect from /:code
+
+* Updates click count
+
+* Updates lastClickedAt timestamp
+
+### 📊 Analytics Page
+
+* Total clicks
+
+* Last clicked time
+
+* Original target URL
+
+* Created date
+
+* Full short link preview
+
+### 📋 Dashboard
+
+* View all links in a table
+
+* Copy short link
+
+* Delete link
+
+* Stats page per link
+
+## 💻 Full Stack
+
+* Next.js API Routes for backend
+
+* Next.js App Pages for frontend
+
+* Drizzle ORM schema + migration
+
+* Neon PostgreSQL cloud database
+
+## 🛠 Tech Stack
+### Frontend
+
+* ⚛️ Next.js (App Router)
+
+* 🎨 TailwindCSS
+
+* 🌼 DaisyUI
+
+* 📦 PrimeReact (UI form components)
+
+* 🔥 react-hot-toast (notifications)
+
+* ✨ TypeScript
+
+### Backend
+
+* 🐘 PostgreSQL (Neon Database)
+
+* 🟦 Drizzle ORM
+
+* 🔗 Next.js Route Handlers
+
+* 📑 Schema-based migrations
+
+⚙️ Environment Variables
+
+## Create a .env.local file:
+
+``` 
+DATABASE_URL="your-neon-connection-string"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💡 Use your Vercel domain in production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+``` 
+NEXT_PUBLIC_BASE_URL="https://yourapp.vercel.app"
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
