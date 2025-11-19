@@ -7,12 +7,13 @@ import { FaRegCopy } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useState } from "react";
+import { LinkProps } from "next/link";
 
 export default function LinksTable({
   links,
   refresh,
 }: {
-  links: Link[];
+  links: LinkProps[];
   refresh: () => void;
 }) {
   const router = useRouter();
